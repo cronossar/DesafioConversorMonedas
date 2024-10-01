@@ -19,10 +19,12 @@ public class ConversorMonedaAppGUI extends JFrame {
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        //Aca se monta la ventana, el título, tamaño y comportamiento de cierre
 
         // Panel principal
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(5, 2));
+        //Aca crea un panel para la ventana con formato de cuadrícula que tendrá 5 filas y 2 columnas
 
         // Componentes
         panel.add(new JLabel("Moneda Base:"));
@@ -42,6 +44,11 @@ public class ConversorMonedaAppGUI extends JFrame {
 
         labelResultado = new JLabel("Resultado: ");
         panel.add(labelResultado);
+        //Componentes usados en la pantalla:
+        // JComboBox<String para seleccionar la moneda base y la moneda destino.
+        //JTextField para ingresar la cantidad a convertir.
+        //JButton para iniciar la conversión.
+        //JLabel para mostrar el resultado.
 
         // Añadir el panel a la ventana
         add(panel);
@@ -86,6 +93,7 @@ public class ConversorMonedaAppGUI extends JFrame {
         return cantidad * tasaCambio;
     }
 
+    //Aca el main llama a la libreria Swing y se crea una instancia para poder verla
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             ConversorMonedaAppGUI app = new ConversorMonedaAppGUI();
