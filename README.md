@@ -1,6 +1,7 @@
 # DesafioConversorMonedas
 
 Estructura General
+
 Importaciones:
 
 import com.aluracurso.arregloAPI.TasaCambioAPI;: Es un método para obtener tasas de cambio entre diferentes monedas. Es un servicio proveido por ExchangeRateAPI.
@@ -14,7 +15,7 @@ monedaBase y monedaDestino: Son variables estáticas que almacenan las monedas in
 Método main ConversorMonedaApp.java
 El main es el punto de entrada de la aplicación:
 
-Colores: Se definen variables de color para mejorar la presentación en la consola.
+Colores: Se definen variables de color para mejorar la presentación en la consola.(Probando que se puede hacer)
 
 Scanner: Se inicializa un objeto Scanner para leer la entrada del usuario.
 
@@ -47,5 +48,11 @@ convertir:
 
 Este método realiza la conversión multiplicando la cantidad por la tasa de cambio y retorna el resultado.
 
+Registrar:
+Se implementa un sencillo codigo para tomar las operaciones realizadas y guardarlas en un archivo txt.
+
+GUI:
+Solamente por curiosidad y no sin poca ayuda, se implementa un main para mostrar la app en un ambiente grafico utilizando la libreria swing.
+
 Resumen
-En resumen, este código permite a los usuarios seleccionar diferentes opciones de conversión de moneda y realizar las conversiones en función de tasas de cambio obtenidas de una API. Utiliza un bucle para permitir múltiples conversiones hasta que el usuario decida salir. Las excepciones se manejan para evitar que la aplicación falle por problemas al obtener tasas de cambio.
+En resumen, este código permite a los usuarios seleccionar diferentes opciones de conversión de moneda y realizar las oeraciones en función de tasas de cambio obtenidas de una API. Utiliza un bucle para permitir múltiples conversiones hasta que el usuario decida salir tipenado la palabra "salir". Las excepciones manejan los fallos de la aplicación y que así no se rompa
