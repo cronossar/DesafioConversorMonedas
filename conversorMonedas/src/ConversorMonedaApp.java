@@ -1,4 +1,5 @@
 import com.aluracurso.arregloAPI.TasaCambioAPI;
+import com.aluracurso.registro.RegistroOperaciones;
 
 import java.util.Scanner;
 
@@ -72,6 +73,9 @@ public class ConversorMonedaApp {
                 // Realizar la conversión
                 double resultado = convertir(cantidad, tasaCambio);
                 System.out.printf(cyan + "El resultado de la conversión es: %.2f %s%n" + reset, resultado, monedaDestino);
+                // Registrar la operación
+                String operacion = String.format("Convertido %.2f %s a %.2f %s", cantidad, monedaBase, resultado, monedaDestino);
+                RegistroOperaciones.agregarOperacion(operacion);
             }
         } while (opcion != 0);
 
