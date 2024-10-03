@@ -1,3 +1,6 @@
+import com.aluracurso.arregloAPI.TasaCambioAPI;
+import com.aluracurso.registro.RegistroOperaciones;
+
 import java.util.Scanner;
 
 public class ConversorMonedaApp {
@@ -5,21 +8,32 @@ public class ConversorMonedaApp {
     private static String monedaDestino;
 
     public static void main(String[] args) {
+
+        String red="\033[31m";
+        String green="\033[32m";
+        String yellow="\033[33m";
+        String blue="\033[34m";
+        String cyan="\033[36m";
+        String reset="\u001B[0m";
+
+
         Scanner scanner = new Scanner(System.in);
         int opcion;
 
         do {
-            System.out.println("Seleccione una opción de conversión:");
+            System.out.println(yellow + "Seleccione una opción de conversión:" + reset);
             System.out.println("1. Peso Argentino a Dólar");
             System.out.println("2. Dólar a Peso Argentino");
             System.out.println("3. Real a Dólar");
             System.out.println("4. Dólar a Real");
+            System.out.println("5. Guaraníes a Dólar");
+            System.out.println("6. Dólar a Guaraníes");
             // Añadir más opciones...
             System.out.println("0. Salir");
             opcion = scanner.nextInt();
 
             if (opcion != 0) {
-                System.out.print("Ingrese la cantidad a convertir: ");
+                System.out.print(cyan + "Ingrese la cantidad a convertir: " + reset);
                 double cantidad = scanner.nextDouble();
 
                 switch (opcion) {
@@ -39,9 +53,17 @@ public class ConversorMonedaApp {
                         monedaBase = "USD"; // Dólar
                         monedaDestino = "BRL"; // Real
                         break;
+                    case 5:
+                        monedaBase = "PYG"; // Guaranies
+                        monedaDestino = "USD"; // Dólar
+                        break;
+                    case 6:
+                        monedaBase = "USD"; // Dólar
+                        monedaDestino = "PYG"; // Guaraníe
+                        break;
                     // Agregar más casos para otras conversiones...
                     default:
-                        System.out.println("Opción no válida.");
+                        System.out.println(red + "Opción no válida." + reset);
                         continue;
                 }
 
@@ -50,7 +72,10 @@ public class ConversorMonedaApp {
 
                 // Realizar la conversión
                 double resultado = convertir(cantidad, tasaCambio);
-                System.out.printf("El resultado de la conversión es: %.2f %s%n", resultado, monedaDestino);
+                System.out.printf(cyan + "El resultado de la conversión es: %.2f %s%n" + reset, resultado, monedaDestino);
+                // Registrar la operación
+                String operacion = String.format("Convertido %.2f %s a %.2f %s", cantidad, monedaBase, resultado, monedaDestino);
+                RegistroOperaciones.agregarOperacion(operacion);
             }
         } while (opcion != 0);
 
@@ -58,7 +83,7 @@ public class ConversorMonedaApp {
     }
 
     private static double obtenerTasaCambio(String monedaBase, String monedaDestino) {
-        // Aquí llamas a tu clase TasaCambioAPI y obtienes la tasa
+        // Aquí llamas a tu clase com.aluracurso.arregloAPI.TasaCambioAPI y obtienes la tasa
         try {
             return TasaCambioAPI.obtenerTasaCambio(monedaBase, monedaDestino);
         } catch (Exception e) {
